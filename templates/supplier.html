@@ -1,0 +1,151 @@
+{% extends 'adminbase.html' %}
+
+
+{% block slider %}
+
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <h1>Welcome Admin</h1>
+        <h2>Here You Can see Sales Details</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+{% endblock slider %}
+
+{% block formy %}
+
+
+
+
+<div class="row">
+    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+        <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+      </div>
+
+    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+
+        <div class="container mt-4">
+
+            <div class="col-md-10">
+
+
+
+                <form action="/supplier" method="post">
+
+                    <h3>Add Supplier Details</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="supid" class="form-label">Supplier ID</label>
+                        <input type="text" class="form-control mt-1" id="bcosupidde" placeholder="Enter Supplier ID"
+                            name="supid" required>
+                        <br>
+                        <label for="supname" class="form-label">Supplier Name</label>
+                        <input type="text" class="form-control mt-1" id="supname" placeholder="Enter Supplier Name"
+                            name="supname" required>
+                        <br>
+
+                        <label for="supcont" class="form-label">Supplier Contact</label>
+                        <input type="test" class="form-control mt-1" id="supcont" placeholder="Enter Category Name"
+                            name="supcont" required>
+                        <br>
+                        
+                        <label for="supaddr" class="form-label">Supplier Address</label>
+                        <input type="text" class="form-control mt-1" id="supaddr" placeholder="Enter Supplier Name"
+                            name="supaddr" required>
+                    </div>
+
+                    <br>
+                    <td>
+                        <button type="submit" class="btn btn-outline-dark">Add Supplier</button>
+
+                    </td>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endblock formy %}
+
+
+
+    {% block body %}
+
+    {% endblock body %}
+
+
+    
+    {% block display %}
+
+
+    {% if allsupplier|length==0 %}
+    <div class="alert alert-danger" role="alert">
+        No Supplier. Add Your Supplier to Inventory
+    </div>
+
+    {% else %}
+
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Sno</th>
+                        <th scope="col">Supplier ID</th>
+                        <th scope="col">Supplier Name</th>
+                        <th scope="col">Supplier Contact</th>
+                        <th scope="col">Supplier Address</th>
+
+                    </tr>
+                </thead>
+        
+        
+                <tbody>
+                    {% for supplier in allsupplier %}
+        
+                    <tr>
+                        <th scope="row">{{loop.index}}</th>
+                        <td>{{supplier.supid}}</td>
+                        <td>{{supplier.supname}}</td>
+                        <td>{{supplier.supcont}}</td>
+                        <td>{{supplier.supaddr}}</td>
+        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    {% endif %}
+
+    <!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/demo/datatables-demo.js"></script>
+
+    {% endblock display %}

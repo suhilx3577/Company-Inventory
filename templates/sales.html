@@ -1,0 +1,166 @@
+{% extends 'adminbase.html' %}
+
+
+{% block slider %}
+
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <h1>Welcome Admin</h1>
+        <h2>Here You Can see Sales Details</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+{% endblock slider %}
+
+{% block formy %}
+
+
+<div class="row">
+    
+    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+        <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+        <div class="container mt-4">
+            <div class="col-md-8">
+
+
+
+                <form action="/sales" method="post">
+
+                    <h3>Add Sales Details To The DataBase</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="sid" class="form-label">Sales ID</label>
+                        <input type="text" class="form-control mt-1" id="sid" placeholder="Enter Sales ID"
+                            name="sid" required>
+                        <br>
+                        
+                        <select class="form-control mt-2" id="prodid" name="prodid" required>
+                            <option selected>Select Product</option>
+                            {% for product in allproduct %}
+                            <option value="{{product.pid}}">{{product.pid}}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+
+                        <label for="cusname" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control mt-1" id="cusname" placeholder="Enter Customer Name"
+                            name="cusname" required>
+                        <br>
+
+                        <label for="saleqty" class="form-label">Sale Quantity</label>
+                        <input type="text" class="form-control mt-1" id="saleqty" placeholder="Enter Sale Quantity"
+                            name="saleqty" required>
+                        <br>
+                        <label for="sdate" class="form-label">Date</label>
+                        <input type="date" class="form-control mt-1" id="sdate" placeholder="Enter  Date of Sale" name="sdate" required>
+                        
+                    </div>
+
+                    <br>
+                    <td>
+                        <button type="submit" class="btn btn-outline-dark">Add Sales</button>
+
+                    </td>
+
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock formy %}
+
+
+
+    {% block body %}
+
+    {% endblock body %}
+
+
+    
+    {% block display %}
+
+
+    {% if allsales|length==0 %}
+    <div class="alert alert-danger" role="alert">
+        No Sales Details Available
+    </div>
+
+    {% else %}
+
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Sales ID</th>
+                        <th scope="col">Product ID</th>
+
+                        <th scope="col">Customer</th>
+                        <th scope="col">Quantity</th>
+
+                        <th scope="col">Action</th>
+        
+                    </tr>
+                </thead>
+        
+        
+                <tbody>
+                    {% for sales in allsales %}
+        
+                    <tr>
+                        <th scope="row">{{loop.index}}</th>
+                        <td>{{sales.sdate}}</td>
+                        <td>{{sales.sid}}</td>
+                        <td>{{sales.prodid}}</td>
+                        <td>{{sales.cusname}}</td>
+                        <td>{{sales.saleqty}}</td>
+                        <td> <a href="/sedit/{{sales.sid}}" class="btn btn-primary btn-xs" >Edit</a>
+                            <a href="/sdelete/{{sales.sid}}" class="btn btn-danger btn-xs">Delete</a></td>
+
+
+        
+        
+        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    {% endif %}
+
+    <!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/demo/datatables-demo.js"></script>
+
+    {% endblock display %}

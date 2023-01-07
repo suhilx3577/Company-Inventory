@@ -1,0 +1,299 @@
+<!-- ======= About Section  THIS IS FORM OF LEFT AND RIGHT CSS======= --> 
+<a> </a>
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+                <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+                <div class="row">
+                    <div class="col-md-10"></div>
+
+                    <div class="col-md-10">
+
+
+                        <form action="/admin" method="post">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control mt-2" placeholder="Enter User Name" name="name"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control mt-2" placeholder="Enter Password" name="Password"
+                                    required>
+                            </div>
+
+                            <br>
+                            <button type="submit" class="btn btn-outline-dark">Login</button>
+
+                        </form>
+
+
+                    </div>
+
+
+                    <div class="col-md-4"></div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>    
+</section><!-- End About Section -->
+
+
+
+
+
+<!--  Serching Table Code -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Data</h1>
+  
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Records</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011/07/25</td>
+                            <td>$170,750</td>
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009/01/12</td>
+                            <td>$86,000</td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  
+  </div>
+  <!-- /.container-fluid -->
+  
+  </div>
+  <!-- End of Main Content -->
+  
+      <!-- Bootstrap core JavaScript-->
+      <script src="static/vendor/jquery/jquery.min.js"></script>
+      <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+      <!-- Core plugin JavaScript-->
+      <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+      <!-- Custom scripts for all pages-->
+      <script src="static/js/sb-admin-2.min.js"></script>
+  
+      <!-- Page level plugins -->
+      <script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+      <script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  
+      <!-- Page level custom scripts -->
+      <script src="static/js/demo/datatables-demo.js"></script>
+
+
+
+
+
+
+
+
+
+
+      
+    
+<!-- End About Section -->
+
+
+
+this is for seaching any easy search
+
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"></table>
+    </div>
+</div>
+
+
+
+this is needed info
+
+<div class="container mt-4">
+    <div class="display-4 text-center text-info">Update Hospital Data</div>
+    <br />
+    <div class="row">
+      <div class="col-md-4"></div>
+  
+      <div class="col-md-4">
+        <div class="card">
+          {% include "message.html" %}
+          <h4 class="text-center text-success">Edit The Sales Details</h4>
+          <div class="card-body bg-light">
+  
+            <form action="/iedit/{{invent.inventid}}" method="post">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  name="invent id"
+                  value={{invent.inventid}}
+                  disabled
+                />
+              </div>
+  
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  name="productname"
+                  value={{invent.productname}}
+                  placeholder="Enter Product Name"
+                  required
+                />
+              </div>
+  
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control mt-2"
+                  name="stockin"
+                  placeholder="Stock Out"
+                 value={{invent.stockin}}
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control mt-2"
+                  name="stockout"
+                  value={{invent.stockout}}
+                  placeholder="Stock IN?"
+                  required
+                />
+              </div>
+  
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control mt-2"
+                  name="stockavail"
+                  value={{invent.stockavail}}
+                  placeholder="Stock Available?"
+                  required
+                />
+              </div>
+  
+              <br />
+              <button class="btn btn-info" type="submit">Update</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+  
+      
+  
+  
+  </div>
+  
+
+
+  this is the edit_cat
+
+  {% extends 'adminbase.html' %}
+
+
+  {% block body %}
+  
+  {% endblock body %}
+  
+  {% block slider %}
+  
+  <section id="hero" class="d-flex align-items-center">
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+          <h1>Welcome Admin</h1>
+          <h2>Here You Edit Inventory</h2>
+          <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      </div>
+  </section><!-- End Hero -->
+  
+  {% endblock slider %}
+  
+  {% block formy %}
+  
+  {% endblock formy %}
+  
+  {% block display %}
+  
+    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+    
+    <!-- Page level plugins -->
+    <script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    
+    <!-- Page level custom scripts -->
+    <script src="static/js/demo/datatables-demo.js"></script>
+    
+    
+  
+  {% endblock display %}

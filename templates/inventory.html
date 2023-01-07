@@ -1,0 +1,112 @@
+{% extends 'adminbase.html' %}
+
+
+{% block slider %}
+
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <h1>Welcome Admin</h1>
+        <h2>Here You Can see Inventory Details</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+{% endblock slider %}
+
+{% block formy %}
+
+    
+{% endblock formy %}
+
+
+
+{% block body %}
+
+{% endblock body %}
+
+
+    
+{% block display %}
+
+
+    {% if allinvents|length==0 %}
+    <div class="alert alert-danger" role="alert">
+        No Inventory. Add Your Inventory
+    </div>
+
+    {% else %}
+
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                <thead>
+                    <tr>
+                            <th scope="col">SNo</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Stock In</th>
+                            <th scope="col">Stock Out</th>
+                            <th scope="col">Stock Available</th>
+                            <th scope="col">Actions</th>
+
+                            
+        
+        
+                    </tr>
+                </thead>
+        
+        
+                <tbody>
+                    {% for invent in allinvents %}
+                    
+        
+                    <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <td>{{invent.productname}}</td>
+                            <td>{{invent.stockin}}</td>
+                            <td>{{invent.stockout}}</td>
+                            <td>{{invent.stockavail}}</td>
+                            <td> <a href="/iedit/{{invent.inventid}}" class="btn btn-primary btn-xs" >Edit</a>
+                            </td>
+
+
+
+
+        
+                    </tr>
+                    {% endfor %}
+
+                    {% endif %}
+                </tbody>
+
+
+                
+            </table>
+        </div>
+    </div>
+
+
+   
+
+    <!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/demo/datatables-demo.js"></script>
+
+{% endblock display %}

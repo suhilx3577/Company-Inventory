@@ -1,0 +1,144 @@
+{% extends 'adminbase.html' %}
+
+
+{% block slider %}
+
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <h1>Welcome Admin</h1>
+        <h2>Here You Can see Receiving Details</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+{% endblock slider %}
+
+{% block formy %}
+
+
+<div class="row">
+    
+    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+        <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+        <div class="container mt-4">
+            <div class="col-md-8">
+
+
+
+                <form action="/receiving" method="post">
+
+                    <h3>Add Receiving Details To The DataBase</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="rid" class="form-label">Receive ID</label>
+                        <input type="text" class="form-control mt-1" id="rid" placeholder="Enter Receive ID"
+                            name="rid" required>
+                        <br>
+                        <label for="supname" class="form-label">Supplier Name</label>
+                        <input type="text" class="form-control mt-1" id="supname" placeholder="Enter Supplier Name"
+                            name="supname" required>
+                        <br>
+                        <label for="rdate" class="form-label">Date</label>
+                        <input type="date" class="form-control mt-1" id="rdate" placeholder="Enter  Date of Recieve" name="rdate" required>
+                        
+                    </div>
+
+                    <br>
+                    <td>
+                        <button type="submit" class="btn btn-outline-dark">Add Receive</button>
+
+                    </td>
+
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock formy %}
+
+
+
+    {% block body %}
+
+    {% endblock body %}
+
+
+    
+    {% block display %}
+
+
+    {% if allreceive|length==0 %}
+    <div class="alert alert-danger" role="alert">
+        No Receive Details Details Available
+    </div>
+
+    {% else %}
+
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Refernce</th>
+                        <th scope="col">Supplier</th>
+                        <th scope="col">Date</th>
+
+                        <th scope="col">Action</th>
+        
+                    </tr>
+                </thead>
+        
+        
+                <tbody>
+                    {% for receive in allreceive %}
+        
+                    <tr>
+                        <th scope="row">{{loop.index}}</th>
+                        <td>{{receive.rid}}</td>
+                        <td>{{receive.supname}}</td>
+                        <td>{{receive.rdate}}</td>
+
+                        <td> <a href="/redit/{{receive.rid}}" class="btn btn-primary btn-xs" >Edit</a>
+                            <a href="/rdelete/{{receive.rid}}" class="btn btn-danger btn-xs">Delete</a></td>  
+        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    {% endif %}
+
+    <!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/demo/datatables-demo.js"></script>
+
+    {% endblock display %}

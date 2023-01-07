@@ -1,0 +1,175 @@
+{% extends 'adminbase.html' %}
+
+
+{% block body %}
+
+{% endblock body %}
+
+{% block slider %}
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <h1>Welcome Admin</h1>
+        <h2>Here You Can Add Prodcuts</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+{% endblock slider %}
+
+
+{% block formy %}
+
+
+<div class="row">
+    
+    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+        <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+      </div>
+
+    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+
+        <div class="container mt-4">
+
+            <div class="col-md-10">
+
+
+
+                <form action="/productlist" method="post">
+
+                    <h3>Add Products To Your Inventory</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="pid" class="form-label mt-1">Product ID</label>
+                        <input type="text" class="form-control " id="pid" placeholder="Enter Product ID"
+                            name="pid" required>
+                    
+                    
+                        <select class="form-control mt-2" id="catname" name="catname" required>
+                                <option selected>Select Category</option>
+                                {% for category in allcategory %}
+                                <option value="{{category.catname}}">{{category.catname}}</option>
+                                {% endfor %}
+                        </select>
+
+
+                        <label for="pname" class="form-label mt-1">Product Name</label>
+                        <input type="text" class="form-control " id="pname" placeholder="Enter Product Name"
+                            name="pname" required>
+                    
+                        <label for="pdesc" class="form-label mt-1">Product Description</label>
+                        <input type="text" class="form-control " id="pdesc" placeholder="Enter Product Desc"
+                            name="pdesc" required>
+                        
+                            
+                        <label for="prodqty" class="form-label mt-1">Product Quantity</label>
+                        <input type="text" class="form-control " id="prodqty" placeholder="Enter Product Quantity"
+                            name="prodqty" required>
+                        
+                        <label for="pprice" class="form-label mt-1">Product Cost</label>
+                        <input type="text" class="form-control " id="pprice" placeholder="Enter Product Price"
+                            name="pprice" required>
+
+                        
+                    </div>
+
+                    <br>
+                    <td>
+                        <button type="submit" class="btn btn-outline-dark">Add Product</button>
+
+                    </td>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock formy %}
+
+{% block display %}
+
+
+
+{% if allproduct|length==0 %}
+<div class="alert alert-danger" role="alert">
+    No Products. Add Your First Product
+</div>
+
+{% else %}
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+            <thead>
+                <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product Quantity</th>
+                    <th scope="col">Action</th>
+
+
+
+                </tr>
+            </thead>
+        
+        
+            <tbody>
+                {% for product in allproduct %}
+        
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{product.pid}}</td>
+                    <td>{{product.catname}}</td>
+                    <td>{{product.pname}}</td>
+                    
+
+                    <td>{{product.pprice}}</td>
+                    <td>{{product.prodqty}}</td>
+                    <td> <a href="/pedit/{{product.pid}}" class="btn btn-primary btn-xs" >Edit</a>
+                        <a href="/pdelete/{{product.pid}}" class="btn btn-danger btn-xs">Delete</a></td>
+
+        
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+    
+
+
+{% endif %}
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Core plugin JavaScript-->
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+  <!-- Custom scripts for all pages-->
+  <script src="static/js/sb-admin-2.min.js"></script>
+  
+  <!-- Page level plugins -->
+  <script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  
+  <!-- Page level custom scripts -->
+  <script src="static/js/demo/datatables-demo.js"></script>
+  
+  
+          
+
+    
+{% endblock display %}

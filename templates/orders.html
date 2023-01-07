@@ -1,0 +1,189 @@
+{% extends 'adminbase2.html' %}
+
+
+{% block body %}
+
+{% endblock body %}
+
+{% block slider %}
+
+
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+        <h1>Welcome Admin</h1>
+        <h2>Here You Can Complete Order</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+{% endblock slider %}
+
+
+
+{% block formy %}
+<div class="row">
+    <h3>Add Customer Order</h3>
+
+
+    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+
+        {% if allproducts|length==0 %}
+        <div class="alert alert-danger" role="alert">
+            No Products to Display
+        </div>
+        {% else %}
+
+
+        
+
+
+
+        
+
+
+
+
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+                        <tr>
+                            <th scope="col">P-id</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">cost</th>
+                            <th scope="col">units</th>
+
+                        </tr>
+
+
+                    </thead>
+
+                    <tbody>
+                        {% for product in allproducts %}
+
+                        <tr>
+                            <th scope="row">{{product.pid}}</th>
+                            <td>{{product.catname}}</td>
+                            <td>{{product.pname}}</td>
+                            <td>{{product.pdesc}}</td>
+
+                            <td>{{product.pcost}}</td>
+                            <td>{{product.punit}}</td>
+
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+<!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+
+<!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/demo/datatables-demo.js"></script>
+
+
+
+
+<!-- End About Section -->
+
+
+
+
+
+
+
+<div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+
+    <div class="container mt-4">
+
+        <div class="col-md-10">
+
+            <form action="/orders" method="post">
+
+
+                <br>
+                <div class="form-group">
+                    <label for="oid" class="form-label">Order Id</label>
+                    <input type="text" class="form-control" id="oid" placeholder="Enter Unique Order Id" name="oid"
+                        required>
+
+                    <label for="cname" class="form-label">Customer Name </label>
+                    <input type="text" class="form-control" id="cname" placeholder="Enter Name of Customer" name="cname"
+                        required>
+
+
+                    <label for="cpno" class="form-label">Phone Number</label>
+                    <input type="number" pattern="[0-9]" class="form-control" id="cpno"
+                        placeholder="Enter Phone Numbers" name="cpno" required>
+
+                    <label for="cemail" class="form-label">Email Id</label>
+                    <input type="email" class="form-control" id="cemail" placeholder="Enter Email Id" name="cemail"
+                        required>
+
+                    <label for="cadd" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="cadd" placeholder="Enter Address" name="cadd" required>
+
+
+
+
+                    <select class="form-control my-2" id="ccost" name="ccost" required>
+                        <option selected>Select Product</option>
+                        {% for product in allproducts %}
+                        <option value="{{product.pcost}}">{{product.pname}}</option>
+                        {% endfor %}
+                    </select>
+
+
+
+                </div>
+
+
+                <td>
+                    <button type="submit" class="btn btn-outline-dark mt-1">Add Order</button>
+
+                </td>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{% endblock formy %}
+
+{% block display %}
+
+
+{% endblock display %}
